@@ -12,9 +12,9 @@ document.getElementById('submit-btn').addEventListener('click',function(){
 
     if(email === 'admin@gmail.com' && pass === 'admin')
     {
-        console.log('valid user')
+        window.location.href = 'bank.html';
     }
     else{
-        console.log('invalid email or password');
+        alert('invalid email or password');
     }
 })

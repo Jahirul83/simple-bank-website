@@ -7,6 +7,13 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 
     const newDepositAmount = parseFloat(newDepositAmountString);
 
+    if (isNaN(newDepositAmount)) {
+        alert('Please provide number');
+        depositField.value = '';
+
+        return;
+    }
+
 
 
     //step-3  showing current deposit
@@ -20,7 +27,7 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     const currentDeposit = previousDepositTotal + newDepositAmount;
 
 
-     // set the deposit
+    // set the deposit
     depositTotalElement.innerText = currentDeposit;
 
 

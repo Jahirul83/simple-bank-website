@@ -7,6 +7,16 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     const newWithdrawAmount = parseFloat(newWithdrawAmountString);
     console.log(newWithdrawAmount);
 
+     //step-7 clear input field
+     withdrawField.value = '';
+
+    if(isNaN(newWithdrawAmount))
+    {
+        alert('Please provide number');
+        
+        return;
+    }
+
 
 
     // getting previous withdraw
@@ -15,34 +25,35 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
 
 
-    // total withdraw
-
-    const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-
-    withdrawTotalElement.innerText = currentWithdrawTotal;
+   
 
 
     // getting total balance
 
     const balanceTotalElement = document.getElementById('current-balance');
-
     const currentBalanecString = balanceTotalElement.innerText;
-
     const currentBalance = parseFloat(currentBalanecString);
 
-    if (currentBalance >= currentWithdrawTotal) {
-        const newBalanceTotal = currentBalance - currentWithdrawTotal;
-        balanceTotalElement.innerText = newBalanceTotal;
 
-    }
-    else {
+
+
+   
+
+    if (newWithdrawAmount > currentBalance) {
         alert('you do not have that amount of money');
-        withdrawField.value = '';
+        return;
+
     }
+     // total withdraw
 
+     const currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+     withdrawTotalElement.innerText = currentWithdrawTotal;
 
-    //step-7 clear input field
-    withdrawField.value = '';
+    // updating total
+    const newBalanceTotal = currentBalance - newWithdrawAmount;
+    balanceTotalElement.innerText = newBalanceTotal;
+
+ 
 
 
 })
